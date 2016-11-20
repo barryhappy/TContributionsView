@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TContributionsView">
+        <attr name="contributions_item_width" format="dimension" />
+        <attr name="contributions_item_height" format="dimension" />
+        <attr name="contributions_item_space" format="dimension" />
+    </declare-styleable>
+</resources>

@@ -13,31 +13,32 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.barryzhang.tcontributionsviewdemo.MainActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
+    <HorizontalScrollView
+        android:scrollbars="none"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <com.barryzhang.tcontributionsview.TContributionsView
             android:id="@+id/contributionsView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             app:contributions_item_height="15dp"
-            app:contributions_item_space="2dp"
-            app:contributions_item_width="15dp"/>
-    </ScrollView>
+            app:contributions_item_space="1dp"
+            app:contributions_item_width="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </HorizontalScrollView>
 
     <com.barryzhang.tcontributionsview.TContributionsView
         android:id="@+id/contributionsView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        app:contributions_item_height="15dp"
-        app:contributions_item_space="2dp"
-        app:contributions_item_width="15dp"/>
+        app:contributions_item_height="20dp"
+        app:contributions_item_space="1dp"
+        app:contributions_item_width="20dp"/>
 
     <com.barryzhang.tcontributionsview.TContributionsView
         android:id="@+id/contributionsView3"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:contributions_item_height="15dp"

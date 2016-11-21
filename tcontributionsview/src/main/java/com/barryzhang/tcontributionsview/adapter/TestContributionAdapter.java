@@ -15,12 +15,12 @@ public class TestContributionAdapter extends BaseContributionsViewAdapter {
 
     @Override
     public int getRowCount() {
-        return 30;
+        return 7;
     }
 
     @Override
     public int getColumnCount() {
-        return 7;
+        return 30;
     }
 
     @Override

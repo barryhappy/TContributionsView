@@ -2,6 +2,7 @@ package com.barryzhang.tcontributionsviewdemo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import com.barryzhang.tcontributionsview.TContributionsView;
 import com.barryzhang.tcontributionsview.adapter.DateContributionsAdapter;
@@ -22,20 +23,29 @@ public class MainActivity extends AppCompatActivity {
 
         useTestAdapter(contributionsView);
         usePositionAdapter(contributionsView2);
-        useDateContributionsAdapter(contributionsView);
+        useDateContributionsAdapter(contributionsView3);
 
 
     }
 
 
     private void useDateContributionsAdapter(TContributionsView contributionsView) {
-        DateContributionsAdapter adapter = new DateContributionsAdapter(contributionsView);
+        DateContributionsAdapter adapter = new DateContributionsAdapter(contributionsView){
+            @Override
+            protected String map(String date) {
+                if(date.contains("T")){
+                    return date.split("T")[0];
+                }
+                return date;
+            }
+        };
         adapter.setWeekCount(10);
         adapter.setEndDay("2016-11-20");
         adapter.put("2016-10-20", 4);
-        adapter.put("2016-10-21", 3);
+        adapter.put("2016-10-21T00:00:00", 3);
         adapter.put("2016-10-22", 3);
         adapter.put("2016-10-27", 1);
+        adapter.put("2016-10-28", 1);
         adapter.put("2016-10-20", 1);
         adapter.put("2016-11-19", 2);
         adapter.put("2016-11-18", 4);
@@ -44,26 +54,35 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void useTestAdapter(TContributionsView contributionsView) {
-        contributionsView.setAdapter(new TestContributionAdapter(contributionsView));
+        TestContributionAdapter adapter = new TestContributionAdapter(contributionsView);
+        contributionsView.setAdapter(adapter);
     }
 
 
     private void usePositionAdapter(TContributionsView contributionsView) {
-        PositionContributionsViewAdapter adapter = new PositionContributionsViewAdapter(contributionsView, 13, 7);
-        adapter.put(0, 0, 1);
-        adapter.put(1, 1, 1);
-        adapter.put(2, 2, 2);
-        adapter.put(3, 3, 2);
-        adapter.put(4, 4, 3);
-        adapter.put(5, 5, 3);
-        adapter.put(6, 6, 4);
-        adapter.put(7, 5, 3);
-        adapter.put(8, 4, 3);
-        adapter.put(9, 3, 2);
-        adapter.put(10, 2, 2);
-        adapter.put(11, 1, 1);
-        adapter.put(12, 0, 1);
+        PositionContributionsViewAdapter adapter =
+                new PositionContributionsViewAdapter(contributionsView, 8, 17);
+        adapter.put(0, 4, 1);
+        adapter.put(1, 4, 2);
+        adapter.put(1, 5, 3);
+        adapter.put(2, 5, 4);
 
+        adapter.put(0, 10, 1);
+        adapter.put(1, 10, 2);
+        adapter.put(1, 9, 3);
+        adapter.put(2, 9, 4);
+
+        adapter.put(4, 7, 2);
+
+        adapter.put(4, 3, 1);
+        adapter.put(5, 4, 2);
+        adapter.put(6, 5, 3);
+        adapter.put(6, 6, 4);
+        adapter.put(6, 7, 4);
+        adapter.put(6, 8, 4);
+        adapter.put(6, 9, 3);
+        adapter.put(5, 10, 2);
+        adapter.put(4, 11, 1);
         contributionsView.setAdapter(adapter);
     }
 }

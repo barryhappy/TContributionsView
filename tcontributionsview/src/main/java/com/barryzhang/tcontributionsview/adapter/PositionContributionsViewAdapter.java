@@ -25,12 +25,12 @@ public class PositionContributionsViewAdapter extends BaseContributionsViewAdapt
     }
 
     @Override
-    public int getRowCount() {
+    public final int getRowCount() {
         return this.row;
     }
 
     @Override
-    public int getColumnCount() {
+    public final int getColumnCount() {
         return this.column;
     }
 

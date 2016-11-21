@@ -61,9 +61,12 @@ public class DateContributionsAdapter extends BaseContributionsViewAdapter {
     }
 
     public void put(String date, int level) {
-        map.put(date, level);
+        map.put(map(date), level);
     }
 
+    protected String map(String date){
+        return date;
+    }
 
     protected Locale getLocale() {
         return Locale.getDefault();

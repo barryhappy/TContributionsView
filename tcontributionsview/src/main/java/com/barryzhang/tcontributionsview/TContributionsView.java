@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.barryzhang.tcontributionsview.adapter.BaseContributionsViewAdapter;
+import com.barryzhang.tcontributionsview.adapter.PositionContributionsViewAdapter;
 import com.barryzhang.tcontributionsview.adapter.TestContributionAdapter;
 
 /**
@@ -70,10 +71,40 @@ public class TContributionsView extends View {
 
         rectF = new RectF(0, 0, itemWidth, itemHeight);
         if (isInEditMode()) {
-            mAdapter = new TestContributionAdapter(this);
+            mAdapter =
+                    new PositionContributionsViewAdapter(this, 7, 17);
+            ((PositionContributionsViewAdapter) mAdapter).put(0, 4, 1);
+            ((PositionContributionsViewAdapter) mAdapter).put(1, 4, 2);
+            ((PositionContributionsViewAdapter) mAdapter).put(1, 5, 3);
+            ((PositionContributionsViewAdapter) mAdapter).put(2, 5, 4);
+
+            ((PositionContributionsViewAdapter) mAdapter).put(0, 10, 1);
+            ((PositionContributionsViewAdapter) mAdapter).put(1, 10, 2);
+            ((PositionContributionsViewAdapter) mAdapter).put(1, 9, 3);
+            ((PositionContributionsViewAdapter) mAdapter).put(2, 9, 4);
+
+            ((PositionContributionsViewAdapter) mAdapter).put(4, 7, 2);
+
+            ((PositionContributionsViewAdapter) mAdapter).put(4, 3, 1);
+            ((PositionContributionsViewAdapter) mAdapter).put(5, 4, 2);
+            ((PositionContributionsViewAdapter) mAdapter).put(6, 5, 3);
+            ((PositionContributionsViewAdapter) mAdapter).put(6, 6, 4);
+            ((PositionContributionsViewAdapter) mAdapter).put(6, 7, 4);
+            ((PositionContributionsViewAdapter) mAdapter).put(6, 8, 4);
+            ((PositionContributionsViewAdapter) mAdapter).put(6, 9, 3);
+            ((PositionContributionsViewAdapter) mAdapter).put(5, 10, 2);
+            ((PositionContributionsViewAdapter) mAdapter).put(4, 11, 1);
+
+            int[][] aa = {
+                    {0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 1, 1, 1, 0, 0},
+                    {0, 0, 1, 0, 1, 0, 0},
+                    {0, 0, 1, 1, 1, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0},
+            };
         }
         this.setAdapter(mAdapter);
-        Log.e("TContributionsView","构造函数");
+        Log.e("TContributionsView", "构造函数");
     }
 
     @Override
@@ -82,7 +113,7 @@ public class TContributionsView extends View {
 
         //        final int widthSpecMode = MeasureSpec.getMode(widthMeasureSpec);
         //        final int heightSpecMode = MeasureSpec.getMode(heightMeasureSpec);
-        Log.e("TContributionsView","onMeasure");
+        Log.e("TContributionsView", "onMeasure");
 
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
@@ -90,7 +121,7 @@ public class TContributionsView extends View {
         int heightSize = MeasureSpec.getSize(heightMeasureSpec) - getPaddingTop() - getPaddingBottom();
         int row = 5;
         int column = 5;
-        if(this.mAdapter != null){
+        if (this.mAdapter != null) {
             row = mAdapter.getRowCount();
             column = mAdapter.getColumnCount();
         }
@@ -116,7 +147,7 @@ public class TContributionsView extends View {
                     rectF.top = (day == 0 ? 0 : day * (itemHeight + itemSpace));
                     rectF.bottom = rectF.top + itemHeight;
                     final int level = mAdapter.getLevel(day, week);
-                    if(level >= 0) {
+                    if (level >= 0) {
                         canvas.drawRect(rectF, getPaintByLevel(level));
                     }
                 }

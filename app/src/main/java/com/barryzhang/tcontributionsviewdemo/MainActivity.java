@@ -22,26 +22,33 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TContributionsView contributionsView = (TContributionsView) findViewById(R.id.contributionsView);
+        TContributionsView contributionsView1s = (TContributionsView) findViewById(R.id.contributionsView1s);
         TContributionsView contributionsView2 = (TContributionsView) findViewById(R.id.contributionsView2);
         TContributionsView contributionsView3 = (TContributionsView) findViewById(R.id.contributionsView3);
+        TContributionsView contributionsView4 = (TContributionsView) findViewById(R.id.contributionsView4);
+        TContributionsView contributionsView5 = (TContributionsView) findViewById(R.id.contributionsView5);
+        TContributionsView contributionsView6 = (TContributionsView) findViewById(R.id.contributionsView6);
+        TContributionsView contributionsView7 = (TContributionsView) findViewById(R.id.contributionsView7);
+        TContributionsView contributionsView8 = (TContributionsView) findViewById(R.id.contributionsView8);
+        TContributionsView contributionsView9 = (TContributionsView) findViewById(R.id.contributionsView9);
 
 
-        //        useTestAdapter(contributionsView);
-        //        useIntegerArraysContributionsAdapter(contributionsView);
-        useMyArraysContributionsAdapter(contributionsView);
+        useTestAdapter(contributionsView);
+        useTestAdapter(contributionsView1s);
         usePositionAdapter(contributionsView2);
         useDateContributionsAdapter(contributionsView3);
+        useIntegerArraysContributionsAdapter(contributionsView4);
+        useMyArraysContributionsAdapter(contributionsView5);
     }
 
     private void useIntegerArraysContributionsAdapter(TContributionsView contributionsView) {
         IntArraysContributionsViewAdapter adapter = new IntArraysContributionsViewAdapter();
         Integer arrays[][] = {
-                {0, 0, 0, 1, 0, 0, 0},
+                {0, 0, 0, 1, 0, 0, 0, 0},
                 {0, 0, 1, 3, 1, 0, 0},
-                {0, 1, 2, 4, 2, 1, 0, 0},
+                {0, 1, 2, 4, 2, 1, 0},
                 {0, 0, 1, 3, 1, 0, 0},
                 {0, 0, 0, 1, 0, 0, 0},
-                {0}
         };
         adapter.setArrays(arrays);
         contributionsView.setAdapter(adapter);
@@ -91,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
         };
         adapter.setWeekCount(10);
         adapter.setEndDay("2016-11-20");
+        adapter.put("2016-10-17", 1);
+        adapter.put("2016-10-18", 2);
+        adapter.put("2016-10-19", 3);
         adapter.put("2016-10-20", 4);
         adapter.put("2016-10-21T00:00:00", 3);
         adapter.put("2016-10-22", 3);
@@ -117,8 +127,8 @@ public class MainActivity extends AppCompatActivity {
         adapter.put(1, 5, 4);
         adapter.put(2, 5, 4);
 
-        adapter.put(0, 10,4);
-        adapter.put(1, 10,4);
+        adapter.put(0, 10, 4);
+        adapter.put(1, 10, 4);
         adapter.put(1, 9, 4);
         adapter.put(2, 9, 4);
 
@@ -131,8 +141,8 @@ public class MainActivity extends AppCompatActivity {
         adapter.put(6, 7, 4);
         adapter.put(6, 8, 4);
         adapter.put(6, 9, 3);
-        adapter.put(5, 10,2);
-        adapter.put(4, 11,1);
+        adapter.put(5, 10, 2);
+        adapter.put(4, 11, 1);
         contributionsView.setAdapter(adapter);
     }
 }

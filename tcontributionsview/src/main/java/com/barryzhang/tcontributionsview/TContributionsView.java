@@ -51,53 +51,34 @@ public class TContributionsView extends View {
 
     public TContributionsView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        paintEmpty.setColor(colorEmpty);
-        paintL1.setColor(colorL1);
-        paintL2.setColor(colorL2);
-        paintL3.setColor(colorL3);
-        paintL4.setColor(colorL4);
-
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TContributionsView);
         try {
             itemWidth = a.getDimensionPixelSize(R.styleable.TContributionsView_contributions_item_width, 20);
             itemHeight = a.getDimensionPixelSize(R.styleable.TContributionsView_contributions_item_height, 20);
             itemSpace = a.getDimensionPixelSize(R.styleable.TContributionsView_contributions_item_space, 2);
+            colorEmpty = a.getColor(R.styleable.TContributionsView_contributions_color_0, colorEmpty);
+            colorL1 = a.getColor(R.styleable.TContributionsView_contributions_color_1, colorL1);
+            colorL2 = a.getColor(R.styleable.TContributionsView_contributions_color_2, colorL2);
+            colorL3 = a.getColor(R.styleable.TContributionsView_contributions_color_3, colorL3);
+            colorL4 = a.getColor(R.styleable.TContributionsView_contributions_color_4, colorL4);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             a.recycle();
         }
 
+        paintEmpty.setColor(colorEmpty);
+        paintL1.setColor(colorL1);
+        paintL2.setColor(colorL2);
+        paintL3.setColor(colorL3);
+        paintL4.setColor(colorL4);
+
 
         rectF = new RectF(0, 0, itemWidth, itemHeight);
         if (isInEditMode()) {
-            mAdapter =
-                    new PositionContributionsViewAdapter(7, 17);
-            ((PositionContributionsViewAdapter) mAdapter).put(0, 4, 1);
-            ((PositionContributionsViewAdapter) mAdapter).put(1, 4, 2);
-            ((PositionContributionsViewAdapter) mAdapter).put(1, 5, 3);
-            ((PositionContributionsViewAdapter) mAdapter).put(2, 5, 4);
-
-            ((PositionContributionsViewAdapter) mAdapter).put(0, 10, 1);
-            ((PositionContributionsViewAdapter) mAdapter).put(1, 10, 2);
-            ((PositionContributionsViewAdapter) mAdapter).put(1, 9, 3);
-            ((PositionContributionsViewAdapter) mAdapter).put(2, 9, 4);
-
-            ((PositionContributionsViewAdapter) mAdapter).put(4, 7, 2);
-
-            ((PositionContributionsViewAdapter) mAdapter).put(4, 3, 1);
-            ((PositionContributionsViewAdapter) mAdapter).put(5, 4, 2);
-            ((PositionContributionsViewAdapter) mAdapter).put(6, 5, 3);
-            ((PositionContributionsViewAdapter) mAdapter).put(6, 6, 4);
-            ((PositionContributionsViewAdapter) mAdapter).put(6, 7, 4);
-            ((PositionContributionsViewAdapter) mAdapter).put(6, 8, 4);
-            ((PositionContributionsViewAdapter) mAdapter).put(6, 9, 3);
-            ((PositionContributionsViewAdapter) mAdapter).put(5, 10, 2);
-            ((PositionContributionsViewAdapter) mAdapter).put(4, 11, 1);
-
+            mAdapter = new TestContributionAdapter();
             this.setAdapter(mAdapter);
         }
-        Log.e("TContributionsView", "构造函数");
     }
 
     @Override
@@ -106,7 +87,6 @@ public class TContributionsView extends View {
 
         //        final int widthSpecMode = MeasureSpec.getMode(widthMeasureSpec);
         //        final int heightSpecMode = MeasureSpec.getMode(heightMeasureSpec);
-        Log.e("TContributionsView", "onMeasure");
 
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
@@ -141,7 +121,7 @@ public class TContributionsView extends View {
                     rectF.bottom = rectF.top + itemHeight;
                     final int level = mAdapter.getLevel(day, week);
                     if (level >= 0) {
-                        drawItem(rectF,canvas, level);
+                        drawItem(rectF, canvas, level);
                     }
                 }
             }
@@ -149,24 +129,24 @@ public class TContributionsView extends View {
     }
 
     protected void drawItem(RectF rect, Canvas canvas, int level) {
-        canvas.drawRect(rect,getPaintByLevel(level));
-
-//        canvas.drawCircle((rectF.left+rectF.right)/2,
-//                (rectF.top+rectF.bottom)/2,
-//                Math.min(itemWidth,itemHeight)/2,
-//                getPaintByLevel(level));
-
-//        canvas.drawOval(rect,getPaintByLevel(level));
+        canvas.drawRect(rect, getPaintByLevel(level));
 
         //        canvas.drawCircle((rectF.left+rectF.right)/2,
-//                                (rectF.top+rectF.bottom)/2,
-//                                Math.min(itemWidth,itemHeight)/2,
-//                                getPaintByLevel(level));
-//        canvas.drawText(String.valueOf(level),
-//                (rectF.left+rectF.right)/2,
-//                (rectF.top+rectF.bottom)/2,
-//                getPaintByLevel(level));
-//        canvas.drawColor(Color.parseColor());
+        //                (rectF.top+rectF.bottom)/2,
+        //                Math.min(itemWidth,itemHeight)/2,
+        //                getPaintByLevel(level));
+
+        //        canvas.drawOval(rect,getPaintByLevel(level));
+
+        //        canvas.drawCircle((rectF.left+rectF.right)/2,
+        //                                (rectF.top+rectF.bottom)/2,
+        //                                Math.min(itemWidth,itemHeight)/2,
+        //                                getPaintByLevel(level));
+        //        canvas.drawText(String.valueOf(level),
+        //                (rectF.left+rectF.right)/2,
+        //                (rectF.top+rectF.bottom)/2,
+        //                getPaintByLevel(level));
+        //        canvas.drawColor(Color.parseColor());
     }
 
     private Paint getPaintByLevel(int level) {

@@ -2,8 +2,13 @@
 <resources>
 
     <declare-styleable name="TContributionsView">
-        <attr name="contributions_item_width" format="dimension" />
-        <attr name="contributions_item_height" format="dimension" />
-        <attr name="contributions_item_space" format="dimension" />
+        <attr name="contributions_item_width" format="dimension"/>
+        <attr name="contributions_item_height" format="dimension"/>
+        <attr name="contributions_item_space" format="dimension"/>
+        <attr name="contributions_color_0" format="color"/>
+        <attr name="contributions_color_1" format="color"/>
+        <attr name="contributions_color_2" format="color"/>
+        <attr name="contributions_color_3" format="color"/>
+        <attr name="contributions_color_4" format="color"/>
     </declare-styleable>
 </resources>

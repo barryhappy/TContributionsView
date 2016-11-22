@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     android:id="@+id/activity_main"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -13,35 +13,125 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.barryzhang.tcontributionsviewdemo.MainActivity">
 
-    <HorizontalScrollView
-        android:scrollbars="none"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <com.barryzhang.tcontributionsview.TContributionsView
-            android:id="@+id/contributionsView"
-            app:contributions_item_height="20dp"
-            app:contributions_item_space="2dp"
-            app:contributions_item_width="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </HorizontalScrollView>
-
-    <com.barryzhang.tcontributionsview.TContributionsView
-        android:id="@+id/contributionsView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:contributions_item_height="15dp"
-        app:contributions_item_space="1.5dp"
-        app:contributions_item_width="15dp"/>
-
-    <com.barryzhang.tcontributionsview.TContributionsView
-        android:id="@+id/contributionsView3"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:contributions_item_height="15dp"
-        app:contributions_item_space="2dp"
-        app:contributions_item_width="15dp"/>
-</LinearLayout>
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Random adapter"/>
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <com.barryzhang.tcontributionsview.TContributionsView
+                android:id="@+id/contributionsView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:contributions_item_height="10dp"
+                app:contributions_item_space="1dp"
+                app:contributions_item_width="10dp"/>
+        </HorizontalScrollView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Custom Color"/>
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+        <com.barryzhang.tcontributionsview.TContributionsView
+            android:id="@+id/contributionsView1s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:contributions_color_1="#FEEC59"
+            app:contributions_color_2="#F4C42E"
+            app:contributions_color_3="#FC9526"
+            app:contributions_color_4="#03011B"
+            app:contributions_item_height="10dp"
+            app:contributions_item_space="1dp"
+            app:contributions_item_width="10dp"/>
+        </HorizontalScrollView>
+
+        <com.barryzhang.tcontributionsview.TContributionsView
+            android:id="@+id/contributionsView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:contributions_item_height="15dp"
+            app:contributions_item_space="1.5dp"
+            app:contributions_item_width="15dp"/>
+
+        <com.barryzhang.tcontributionsview.TContributionsView
+            android:id="@+id/contributionsView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:contributions_item_height="15dp"
+            app:contributions_item_space="2dp"
+            app:contributions_item_width="15dp"/>
+
+        <com.barryzhang.tcontributionsview.TContributionsView
+            android:id="@+id/contributionsView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:contributions_item_height="20dp"
+            app:contributions_item_space="2dp"
+            app:contributions_item_width="20dp"/>
+
+        <com.barryzhang.tcontributionsview.TContributionsView
+            android:id="@+id/contributionsView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:contributions_item_height="20dp"
+            app:contributions_item_space="2dp"
+            app:contributions_item_width="20dp"/>
+
+        <com.barryzhang.tcontributionsview.TContributionsView
+            android:id="@+id/contributionsView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:contributions_item_height="20dp"
+            app:contributions_item_space="2dp"
+            app:contributions_item_width="20dp"/>
+
+        <com.barryzhang.tcontributionsview.TContributionsView
+            android:id="@+id/contributionsView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:contributions_item_height="20dp"
+            app:contributions_item_space="2dp"
+            app:contributions_item_width="20dp"/>
+
+        <com.barryzhang.tcontributionsview.TContributionsView
+            android:id="@+id/contributionsView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:contributions_item_height="20dp"
+            app:contributions_item_space="2dp"
+            app:contributions_item_width="20dp"/>
+
+        <com.barryzhang.tcontributionsview.TContributionsView
+            android:id="@+id/contributionsView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:contributions_item_height="20dp"
+            app:contributions_item_space="2dp"
+            app:contributions_item_width="20dp"/>
+    </LinearLayout>
+</ScrollView>

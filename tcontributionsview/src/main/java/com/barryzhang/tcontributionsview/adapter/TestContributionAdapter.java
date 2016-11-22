@@ -20,7 +20,7 @@ public class TestContributionAdapter extends BaseContributionsViewAdapter {
 
     @Override
     public int getColumnCount() {
-        return 30;
+        return 40;
     }
 
     @Override

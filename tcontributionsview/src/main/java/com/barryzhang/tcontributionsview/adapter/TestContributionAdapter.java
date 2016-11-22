@@ -9,8 +9,8 @@ import com.barryzhang.tcontributionsview.TContributionsView;
 
 public class TestContributionAdapter extends BaseContributionsViewAdapter {
 
-    public TestContributionAdapter(TContributionsView mContributionsView) {
-        super(mContributionsView);
+    public TestContributionAdapter() {
+        super();
     }
 
     @Override

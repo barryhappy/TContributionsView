@@ -1,13 +1,18 @@
 package com.barryzhang.tcontributionsviewdemo;
 
+import android.animation.ObjectAnimator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 
 import com.barryzhang.tcontributionsview.TContributionsView;
+import com.barryzhang.tcontributionsview.adapter.AbstractArraysContributionsViewAdapter;
 import com.barryzhang.tcontributionsview.adapter.DateContributionsAdapter;
+import com.barryzhang.tcontributionsview.adapter.IntArraysContributionsViewAdapter;
 import com.barryzhang.tcontributionsview.adapter.PositionContributionsViewAdapter;
 import com.barryzhang.tcontributionsview.adapter.TestContributionAdapter;
+
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,19 +26,64 @@ public class MainActivity extends AppCompatActivity {
         TContributionsView contributionsView3 = (TContributionsView) findViewById(R.id.contributionsView3);
 
 
-        useTestAdapter(contributionsView);
+        //        useTestAdapter(contributionsView);
+        //        useIntegerArraysContributionsAdapter(contributionsView);
+        useMyArraysContributionsAdapter(contributionsView);
         usePositionAdapter(contributionsView2);
         useDateContributionsAdapter(contributionsView3);
+    }
 
+    private void useIntegerArraysContributionsAdapter(TContributionsView contributionsView) {
+        IntArraysContributionsViewAdapter adapter = new IntArraysContributionsViewAdapter();
+        Integer arrays[][] = {
+                {0, 0, 0, 1, 0, 0, 0},
+                {0, 0, 1, 3, 1, 0, 0},
+                {0, 1, 2, 4, 2, 1, 0, 0},
+                {0, 0, 1, 3, 1, 0, 0},
+                {0, 0, 0, 1, 0, 0, 0},
+                {0}
+        };
+        adapter.setArrays(arrays);
+        contributionsView.setAdapter(adapter);
+    }
 
+    private void useMyArraysContributionsAdapter(TContributionsView contributionsView) {
+        AbstractArraysContributionsViewAdapter<String> adapter = new AbstractArraysContributionsViewAdapter<String>() {
+
+            @Override
+            protected int mapLevel(String from) {
+                if (TextUtils.isEmpty(from)) {
+                    return 0;
+                }
+                switch (from) {
+                    case "A":
+                        return 0;
+                    case "B":
+                        return 2;
+                    case "S":
+                        return 4;
+                    default:
+                        return 0;
+                }
+            }
+        };
+        String arrays[][] = {
+                {"A", "A", "B", "A", "A",},
+                {"A", "A", "S", "A", "A",},
+                {"B", "B", "S", "B", "B",},
+                {"A", "A", "S", "A", "A",},
+                {"A", "A", "B", "A", "A",},
+        };
+        adapter.setArrays(arrays);
+        contributionsView.setAdapter(adapter);
     }
 
 
     private void useDateContributionsAdapter(TContributionsView contributionsView) {
-        DateContributionsAdapter adapter = new DateContributionsAdapter(contributionsView){
+        DateContributionsAdapter adapter = new DateContributionsAdapter() {
             @Override
-            protected String map(String date) {
-                if(date.contains("T")){
+            protected String mapDate(String date) {
+                if (date.contains("T")) {
                     return date.split("T")[0];
                 }
                 return date;
@@ -54,25 +104,25 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void useTestAdapter(TContributionsView contributionsView) {
-        TestContributionAdapter adapter = new TestContributionAdapter(contributionsView);
+        TestContributionAdapter adapter = new TestContributionAdapter();
         contributionsView.setAdapter(adapter);
     }
 
 
     private void usePositionAdapter(TContributionsView contributionsView) {
         PositionContributionsViewAdapter adapter =
-                new PositionContributionsViewAdapter(contributionsView, 8, 17);
-        adapter.put(0, 4, 1);
-        adapter.put(1, 4, 2);
-        adapter.put(1, 5, 3);
+                new PositionContributionsViewAdapter(8, 17);
+        adapter.put(0, 4, 4);
+        adapter.put(1, 4, 4);
+        adapter.put(1, 5, 4);
         adapter.put(2, 5, 4);
 
-        adapter.put(0, 10, 1);
-        adapter.put(1, 10, 2);
-        adapter.put(1, 9, 3);
+        adapter.put(0, 10,4);
+        adapter.put(1, 10,4);
+        adapter.put(1, 9, 4);
         adapter.put(2, 9, 4);
 
-        adapter.put(4, 7, 2);
+        adapter.put(4, 7, 4);
 
         adapter.put(4, 3, 1);
         adapter.put(5, 4, 2);
@@ -81,8 +131,8 @@ public class MainActivity extends AppCompatActivity {
         adapter.put(6, 7, 4);
         adapter.put(6, 8, 4);
         adapter.put(6, 9, 3);
-        adapter.put(5, 10, 2);
-        adapter.put(4, 11, 1);
+        adapter.put(5, 10,2);
+        adapter.put(4, 11,1);
         contributionsView.setAdapter(adapter);
     }
 }

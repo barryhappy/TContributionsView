@@ -2,8 +2,6 @@ package com.barryzhang.tcontributionsview.adapter;
 
 import android.util.Log;
 
-import com.barryzhang.tcontributionsview.TContributionsView;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,8 +24,8 @@ public class DateContributionsAdapter extends BaseContributionsViewAdapter {
     private Calendar mEndDay = Calendar.getInstance(getLocale());
     private Map<String, Integer> map = new HashMap<>();
 
-    public DateContributionsAdapter(TContributionsView mContributionsView) {
-        super(mContributionsView);
+    public DateContributionsAdapter() {
+        super();
     }
 
     @Override
@@ -61,10 +59,10 @@ public class DateContributionsAdapter extends BaseContributionsViewAdapter {
     }
 
     public void put(String date, int level) {
-        map.put(map(date), level);
+        map.put(mapDate(date), level);
     }
 
-    protected String map(String date){
+    protected String mapDate(String date) {
         return date;
     }
 

@@ -72,7 +72,7 @@ public class TContributionsView extends View {
         rectF = new RectF(0, 0, itemWidth, itemHeight);
         if (isInEditMode()) {
             mAdapter =
-                    new PositionContributionsViewAdapter(this, 7, 17);
+                    new PositionContributionsViewAdapter(7, 17);
             ((PositionContributionsViewAdapter) mAdapter).put(0, 4, 1);
             ((PositionContributionsViewAdapter) mAdapter).put(1, 4, 2);
             ((PositionContributionsViewAdapter) mAdapter).put(1, 5, 3);
@@ -95,15 +95,8 @@ public class TContributionsView extends View {
             ((PositionContributionsViewAdapter) mAdapter).put(5, 10, 2);
             ((PositionContributionsViewAdapter) mAdapter).put(4, 11, 1);
 
-            int[][] aa = {
-                    {0, 0, 0, 0, 0, 0, 0},
-                    {0, 0, 1, 1, 1, 0, 0},
-                    {0, 0, 1, 0, 1, 0, 0},
-                    {0, 0, 1, 1, 1, 0, 0},
-                    {0, 0, 0, 0, 0, 0, 0},
-            };
+            this.setAdapter(mAdapter);
         }
-        this.setAdapter(mAdapter);
         Log.e("TContributionsView", "构造函数");
     }
 
@@ -148,11 +141,32 @@ public class TContributionsView extends View {
                     rectF.bottom = rectF.top + itemHeight;
                     final int level = mAdapter.getLevel(day, week);
                     if (level >= 0) {
-                        canvas.drawRect(rectF, getPaintByLevel(level));
+                        drawItem(rectF,canvas, level);
                     }
                 }
             }
         }
+    }
+
+    protected void drawItem(RectF rect, Canvas canvas, int level) {
+        canvas.drawRect(rect,getPaintByLevel(level));
+
+//        canvas.drawCircle((rectF.left+rectF.right)/2,
+//                (rectF.top+rectF.bottom)/2,
+//                Math.min(itemWidth,itemHeight)/2,
+//                getPaintByLevel(level));
+
+//        canvas.drawOval(rect,getPaintByLevel(level));
+
+        //        canvas.drawCircle((rectF.left+rectF.right)/2,
+//                                (rectF.top+rectF.bottom)/2,
+//                                Math.min(itemWidth,itemHeight)/2,
+//                                getPaintByLevel(level));
+//        canvas.drawText(String.valueOf(level),
+//                (rectF.left+rectF.right)/2,
+//                (rectF.top+rectF.bottom)/2,
+//                getPaintByLevel(level));
+//        canvas.drawColor(Color.parseColor());
     }
 
     private Paint getPaintByLevel(int level) {
@@ -175,6 +189,7 @@ public class TContributionsView extends View {
     public void setAdapter(BaseContributionsViewAdapter adapter) {
         this.mAdapter = adapter;
         if (this.mAdapter != null) {
+            this.mAdapter.setContributionsView(this);
             this.mAdapter.notifyDataSetChanged();
         }
     }

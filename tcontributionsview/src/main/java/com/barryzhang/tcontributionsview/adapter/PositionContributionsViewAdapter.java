@@ -17,9 +17,8 @@ public class PositionContributionsViewAdapter extends BaseContributionsViewAdapt
     private int row;
     private int column;
 
-    public PositionContributionsViewAdapter(TContributionsView mContributionsView,
-                                            int row, int column) {
-        super(mContributionsView);
+    public PositionContributionsViewAdapter(int row, int column) {
+        super();
         this.row = row;
         this.column = column;
     }

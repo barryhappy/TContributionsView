@@ -9,10 +9,9 @@ import com.barryzhang.tcontributionsview.TContributionsView;
 
 public abstract class BaseContributionsViewAdapter {
 
-    TContributionsView mContributionsView;
+    private TContributionsView mContributionsView;
 
-    public BaseContributionsViewAdapter(TContributionsView mContributionsView) {
-        this.mContributionsView = mContributionsView;
+    public BaseContributionsViewAdapter() {
     }
 
     public abstract int getRowCount();
@@ -23,5 +22,9 @@ public abstract class BaseContributionsViewAdapter {
 
     public void notifyDataSetChanged(){
         mContributionsView.invalidate();
+    }
+
+    public void setContributionsView(TContributionsView mContributionsView) {
+        this.mContributionsView = mContributionsView;
     }
 }

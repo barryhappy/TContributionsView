@@ -21,9 +21,7 @@ import com.barryzhang.tcontributionsview.adapter.TestContributionAdapter;
 
 public class TContributionsView extends View {
 
-    BaseContributionsViewAdapter mAdapter;
-
-    public static int COLOR_ITEM_EMPTY = Color.rgb(238, 238, 238);
+    protected BaseContributionsViewAdapter mAdapter;
 
     private int colorEmpty = Color.parseColor("#e0e0e0");
     private int colorL1 = Color.parseColor("#cde372");
@@ -34,12 +32,15 @@ public class TContributionsView extends View {
     protected int itemWidth = 30;
     protected int itemHeight = 30;
     protected int itemSpace = 6;
-    Paint paintEmpty = new Paint();
-    Paint paintL1 = new Paint();
-    Paint paintL2 = new Paint();
-    Paint paintL3 = new Paint();
-    Paint paintL4 = new Paint();
-    RectF rectF;
+
+    protected Paint paintEmpty = new Paint();
+    protected Paint paintL1 = new Paint();
+    protected Paint paintL2 = new Paint();
+    protected Paint paintL3 = new Paint();
+    protected Paint paintL4 = new Paint();
+    private RectF rectF;
+
+    private boolean useCircleMode = false;
 
     public TContributionsView(Context context) {
         this(context, null);
@@ -61,6 +62,7 @@ public class TContributionsView extends View {
             colorL2 = a.getColor(R.styleable.TContributionsView_contributions_color_2, colorL2);
             colorL3 = a.getColor(R.styleable.TContributionsView_contributions_color_3, colorL3);
             colorL4 = a.getColor(R.styleable.TContributionsView_contributions_color_4, colorL4);
+            useCircleMode = a.getBoolean(R.styleable.TContributionsView_contributions_use_circle, useCircleMode);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -83,24 +85,17 @@ public class TContributionsView extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-
-        //        final int widthSpecMode = MeasureSpec.getMode(widthMeasureSpec);
-        //        final int heightSpecMode = MeasureSpec.getMode(heightMeasureSpec);
-
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
-        int widthSize = MeasureSpec.getSize(widthMeasureSpec) - getPaddingLeft() - getPaddingRight();
-        int heightSize = MeasureSpec.getSize(heightMeasureSpec) - getPaddingTop() - getPaddingBottom();
-        int row = 5;
-        int column = 5;
+
+        int row = 0;
+        int column = 0;
         if (this.mAdapter != null) {
             row = mAdapter.getRowCount();
             column = mAdapter.getColumnCount();
         }
-        int measureWidth = column * (itemWidth + itemSpace) - itemSpace;
-        int measureHeight = row * (itemHeight + itemSpace) - itemSpace;
-
+        int measureWidth = (column == 0 ? 0 : column * (itemWidth + itemSpace) - itemSpace);
+        int measureHeight = (row == 0 ? 0 : row * (itemHeight + itemSpace) - itemSpace);
 
         setMeasuredDimension(widthMode == MeasureSpec.EXACTLY ? widthMeasureSpec : measureWidth,
                 heightMode == MeasureSpec.EXACTLY ? heightMeasureSpec : measureHeight);
@@ -129,24 +124,14 @@ public class TContributionsView extends View {
     }
 
     protected void drawItem(RectF rect, Canvas canvas, int level) {
-        canvas.drawRect(rect, getPaintByLevel(level));
-
-        //        canvas.drawCircle((rectF.left+rectF.right)/2,
-        //                (rectF.top+rectF.bottom)/2,
-        //                Math.min(itemWidth,itemHeight)/2,
-        //                getPaintByLevel(level));
-
-        //        canvas.drawOval(rect,getPaintByLevel(level));
-
-        //        canvas.drawCircle((rectF.left+rectF.right)/2,
-        //                                (rectF.top+rectF.bottom)/2,
-        //                                Math.min(itemWidth,itemHeight)/2,
-        //                                getPaintByLevel(level));
-        //        canvas.drawText(String.valueOf(level),
-        //                (rectF.left+rectF.right)/2,
-        //                (rectF.top+rectF.bottom)/2,
-        //                getPaintByLevel(level));
-        //        canvas.drawColor(Color.parseColor());
+        if (useCircleMode) {
+            canvas.drawCircle((rectF.left + rectF.right) / 2,
+                    (rectF.top + rectF.bottom) / 2,
+                    Math.min(itemWidth, itemHeight) / 2,
+                    getPaintByLevel(level));
+        } else {
+            canvas.drawRect(rect, getPaintByLevel(level));
+        }
     }
 
     private Paint getPaintByLevel(int level) {

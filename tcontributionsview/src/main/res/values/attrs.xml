@@ -10,5 +10,6 @@
         <attr name="contributions_color_2" format="color"/>
         <attr name="contributions_color_3" format="color"/>
         <attr name="contributions_color_4" format="color"/>
+        <attr name="contributions_use_circle" format="boolean"/>
     </declare-styleable>
 </resources>

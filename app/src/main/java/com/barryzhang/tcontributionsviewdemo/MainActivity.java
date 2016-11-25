@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         TContributionsView contributionsView = (TContributionsView) findViewById(R.id.contributionsView);
         TContributionsView contributionsView1s = (TContributionsView) findViewById(R.id.contributionsView1s);
+        TContributionsView contributionsView1ss = (TContributionsView) findViewById(R.id.contributionsView1ss);
         TContributionsView contributionsView2 = (TContributionsView) findViewById(R.id.contributionsView2);
         TContributionsView contributionsView3 = (TContributionsView) findViewById(R.id.contributionsView3);
         TContributionsView contributionsView4 = (TContributionsView) findViewById(R.id.contributionsView4);
@@ -35,10 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
         useTestAdapter(contributionsView);
         useTestAdapter(contributionsView1s);
+        useTestAdapter(contributionsView1ss, 7, 20);
         usePositionAdapter(contributionsView2);
         useDateContributionsAdapter(contributionsView3);
         useIntegerArraysContributionsAdapter(contributionsView4);
         useMyArraysContributionsAdapter(contributionsView5);
+        useIntegerArraysContributionsAdapterMineCraft(contributionsView6);
     }
 
     private void useIntegerArraysContributionsAdapter(TContributionsView contributionsView) {
@@ -49,6 +52,29 @@ public class MainActivity extends AppCompatActivity {
                 {0, 1, 2, 4, 2, 1, 0},
                 {0, 0, 1, 3, 1, 0, 0},
                 {0, 0, 0, 1, 0, 0, 0},
+        };
+        adapter.setArrays(arrays);
+        contributionsView.setAdapter(adapter);
+    }
+
+    private void useIntegerArraysContributionsAdapterMineCraft(TContributionsView contributionsView) {
+        IntArraysContributionsViewAdapter adapter = new IntArraysContributionsViewAdapter();
+        Integer arrays[][] = {
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 0,},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 2, 3, 4, 0,},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 2, 3, 2, 4, 0,},
+                {0, 0, 0, 0, 0, 0, 0, 0, 4, 2, 3, 2, 4, 0, 0,},
+                {0, 0, 4, 4, 0, 0, 0, 4, 2, 3, 2, 4, 0, 0, 0,},
+                {0, 0, 4, 3, 4, 0, 4, 2, 3, 2, 4, 0, 0, 0, 0,},
+                {0, 0, 0, 4, 3, 4, 2, 3, 2, 4, 0, 0, 0, 0, 0,},
+                {0, 0, 0, 4, 3, 4, 3, 2, 4, 0, 0, 0, 0, 0, 0,},
+                {0, 0, 0, 0, 4, 3, 4, 4, 0, 0, 0, 0, 0, 0, 0,},
+                {0, 0, 0, 1, 1, 4, 3, 3, 4, 0, 0, 0, 0, 0, 0,},
+                {0, 0, 1, 1, 1, 0, 4, 4, 3, 4, 0, 0, 0, 0, 0,},
+                {4, 4, 1, 1, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0,},
+                {4, 1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
+                {4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
         };
         adapter.setArrays(arrays);
         contributionsView.setAdapter(adapter);
@@ -115,6 +141,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void useTestAdapter(TContributionsView contributionsView) {
         TestContributionAdapter adapter = new TestContributionAdapter();
+        contributionsView.setAdapter(adapter);
+    }
+
+    private void useTestAdapter(TContributionsView contributionsView, int row, int column) {
+        TestContributionAdapter adapter = new TestContributionAdapter(row, column);
         contributionsView.setAdapter(adapter);
     }
 

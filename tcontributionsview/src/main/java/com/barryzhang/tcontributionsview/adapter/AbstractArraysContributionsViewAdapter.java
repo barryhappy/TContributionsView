@@ -1,9 +1,5 @@
 package com.barryzhang.tcontributionsview.adapter;
 
-import com.barryzhang.tcontributionsview.TContributionsView;
-
-import java.util.Objects;
-
 /**
  * https://github.com/barryhappy
  * Created by Barry on 2016/11/22

@@ -101,7 +101,6 @@ public class TContributionsView extends View {
                 heightMode == MeasureSpec.EXACTLY ? heightMeasureSpec : measureHeight);
     }
 
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -124,13 +123,15 @@ public class TContributionsView extends View {
     }
 
     protected void drawItem(RectF rect, Canvas canvas, int level) {
+        Paint paintByLevel = getPaintByLevel(level);
         if (useCircleMode) {
+            paintByLevel.setAntiAlias(true);
             canvas.drawCircle((rectF.left + rectF.right) / 2,
                     (rectF.top + rectF.bottom) / 2,
                     Math.min(itemWidth, itemHeight) / 2,
-                    getPaintByLevel(level));
+                    paintByLevel);
         } else {
-            canvas.drawRect(rect, getPaintByLevel(level));
+            canvas.drawRect(rect, paintByLevel);
         }
     }
 

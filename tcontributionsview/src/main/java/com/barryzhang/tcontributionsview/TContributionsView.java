@@ -159,4 +159,24 @@ public class TContributionsView extends View {
             this.mAdapter.notifyDataSetChanged();
         }
     }
+
+    public BaseContributionsViewAdapter getAdapter() {
+        return mAdapter;
+    }
+
+    public int getItemWidth() {
+        return itemWidth;
+    }
+
+    public int getItemHeight() {
+        return itemHeight;
+    }
+
+    public int getItemSpace() {
+        return itemSpace;
+    }
+
+    public boolean isUseCircleMode() {
+        return useCircleMode;
+    }
 }

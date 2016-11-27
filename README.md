@@ -3,7 +3,16 @@ TContributionsView可以用以显示类似github贡献度的View，当然，也�
 
 # 1. 效果图
 ![overview.png](images/overview.png)
-
+使用：
+```java compile 'com.barryzhang:tcontributionsview:0.0.1'
+```
+目前处于测试状态，所以还需要：
+```java
+repositories {
+    maven {
+        url 'https://dl.bintray.com/barryhappy/maven/'
+    }
+```
 # 2. 快速开始：
 ![fast](images/14801274783930.jpg)
 只需这么写：

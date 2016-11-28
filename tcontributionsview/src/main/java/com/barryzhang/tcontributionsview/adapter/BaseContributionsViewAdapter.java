@@ -20,7 +20,7 @@ public abstract class BaseContributionsViewAdapter {
 
     public abstract int getLevel(int row, int column);
 
-    public void notifyDataSetChanged(){
+    public void notifyDataSetChanged() {
         mContributionsView.invalidate();
     }
 

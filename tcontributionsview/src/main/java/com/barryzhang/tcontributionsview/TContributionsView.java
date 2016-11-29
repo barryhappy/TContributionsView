@@ -94,24 +94,33 @@ public class TContributionsView extends View {
             row = mAdapter.getRowCount();
             column = mAdapter.getColumnCount();
         }
-        int measureWidth = (column == 0 ? 0 : column * (itemWidth + itemSpace) - itemSpace);
-        int measureHeight = (row == 0 ? 0 : row * (itemHeight + itemSpace) - itemSpace);
+        int measureWidth = (column == 0 ? 0 : column * (itemWidth + itemSpace) - itemSpace)
+                + getPaddingLeft() + getPaddingRight();
+        int measureHeight = (row == 0 ? 0 : row * (itemHeight + itemSpace) - itemSpace)
+                + getPaddingTop() + getPaddingBottom() ;
 
-        setMeasuredDimension(widthMode == MeasureSpec.EXACTLY ? widthMeasureSpec : measureWidth,
-                heightMode == MeasureSpec.EXACTLY ? heightMeasureSpec : measureHeight);
+        int mWidth = widthMode == MeasureSpec.EXACTLY ?
+                MeasureSpec.getSize(widthMeasureSpec) : measureWidth;
+        int mHeight = heightMode == MeasureSpec.EXACTLY ?
+                MeasureSpec.getSize(heightMeasureSpec) : measureHeight;
+        setMeasuredDimension(mWidth, mHeight);
+
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        canvas.clipRect(getPaddingLeft(), getPaddingTop(),
+                getRight()- getPaddingRight(),
+                getBottom() - getPaddingBottom());
         if (mAdapter != null) {
             final int columnCount = mAdapter.getColumnCount();
             final int rowCount = mAdapter.getRowCount();
             for (int week = 0; week < columnCount; week++) {
                 for (int day = 0; day < rowCount; day++) {
-                    rectF.left = (week == 0 ? 0 : week * (itemWidth + itemSpace));
-                    rectF.right = rectF.left + itemWidth;
-                    rectF.top = (day == 0 ? 0 : day * (itemHeight + itemSpace));
+                    rectF.left = (week == 0 ? 0 : week * (itemWidth + itemSpace)) + getPaddingLeft();
+                    rectF.right = rectF.left + itemWidth ;
+                    rectF.top = (day == 0 ? 0 : day * (itemHeight + itemSpace)) +  + getPaddingTop();
                     rectF.bottom = rectF.top + itemHeight;
                     final int level = mAdapter.getLevel(day, week);
                     if (level >= 0) {
@@ -120,6 +129,7 @@ public class TContributionsView extends View {
                 }
             }
         }
+
     }
 
     protected void drawItem(RectF rect, Canvas canvas, int level) {

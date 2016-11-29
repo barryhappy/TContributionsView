@@ -1,15 +1,39 @@
 apply plugin: 'com.android.library'
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'TContributionsView'
+
+    publishedGroupId = 'com.barryzhang'
+    libraryName = 'TContributionsView'
+    artifact = 'tcontributionsview'
+
+    libraryDescription = 'Can be used show contributions view like github , and , not only this.'
+
+    siteUrl = 'https://github.com/barryhappy/TContributionsView'
+    gitUrl = 'https://github.com/barryhappy/TContributionsView.git'
+
+    libraryVersion = '0.1'
+
+    developerId = 'barryhappy'
+    developerName = 'Barry Zhang'
+    developerEmail = 'barryhappy2010@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
 
 android {
     compileSdkVersion 25
     buildToolsVersion "24.0.2"
 
     defaultConfig {
-        minSdkVersion 1
+        minSdkVersion 9
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
 
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
     buildTypes {
@@ -22,4 +46,12 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.0.0'
+    testCompile 'junit:junit:4.12'
 }
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

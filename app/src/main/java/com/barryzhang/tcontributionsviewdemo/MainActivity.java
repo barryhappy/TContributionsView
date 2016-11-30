@@ -4,6 +4,8 @@ import android.animation.ObjectAnimator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.Toast;
 
 import com.barryzhang.tcontributionsview.TContributionsView;
 import com.barryzhang.tcontributionsview.adapter.AbstractArraysContributionsViewAdapter;
@@ -21,9 +23,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TContributionsView contributionsView = (TContributionsView) findViewById(R.id.contributionsView);
+        final TContributionsView contributionsView = (TContributionsView) findViewById(R.id.contributionsView);
         TContributionsView contributionsView1s = (TContributionsView) findViewById(R.id.contributionsView1s);
         TContributionsView contributionsView1ss = (TContributionsView) findViewById(R.id.contributionsView1ss);
+        TContributionsView contributionsViewX = (TContributionsView) findViewById(R.id.contributionsViewX);
         TContributionsView contributionsView2 = (TContributionsView) findViewById(R.id.contributionsView2);
         TContributionsView contributionsView3 = (TContributionsView) findViewById(R.id.contributionsView3);
         TContributionsView contributionsView4 = (TContributionsView) findViewById(R.id.contributionsView4);
@@ -33,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
         TContributionsView contributionsView8 = (TContributionsView) findViewById(R.id.contributionsView8);
         TContributionsView contributionsView9 = (TContributionsView) findViewById(R.id.contributionsView9);
 
-
         useTestAdapter(contributionsView);
+        useTestAdapter(contributionsViewX);
         useTestAdapter(contributionsView1s);
-        useTestAdapter(contributionsView1ss, 7, 20);
+        useTestAdapter(contributionsView1ss, 5, 30);
         usePositionAdapter(contributionsView2);
         useDateContributionsAdapter(contributionsView3);
         useIntegerArraysContributionsAdapter(contributionsView4);
@@ -66,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 2, 3, 2, 4, 0,},
                 {0, 0, 0, 0, 0, 0, 0, 0, 4, 2, 3, 2, 4, 0, 0,},
                 {0, 0, 4, 4, 0, 0, 0, 4, 2, 3, 2, 4, 0, 0, 0,},
-                {0, 0, 4, 3, 4, 0, 4, 2, 3, 2, 4, 0, 0, 0, 0,},
+                {0, 0, 4, 3, 4, -1, 4, 2, 3, 2, 4, 0, 0, 0, 0,},
                 {0, 0, 0, 4, 3, 4, 2, 3, 2, 4, 0, 0, 0, 0, 0,},
                 {0, 0, 0, 4, 3, 4, 3, 2, 4, 0, 0, 0, 0, 0, 0,},
                 {0, 0, 0, 0, 4, 3, 4, 4, 0, 0, 0, 0, 0, 0, 0,},
@@ -140,8 +143,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void useTestAdapter(TContributionsView contributionsView) {
-        TestContributionAdapter adapter = new TestContributionAdapter();
+        final TestContributionAdapter adapter = new TestContributionAdapter();
         contributionsView.setAdapter(adapter);
+
+        contributionsView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "click2", Toast.LENGTH_SHORT).show();
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
     private void useTestAdapter(TContributionsView contributionsView, int row, int column) {

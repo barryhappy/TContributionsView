@@ -10,11 +10,10 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.barryzhang.tcontributionsviewdemo.MainActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -36,7 +35,17 @@
                 app:contributions_item_height="10dp"
                 app:contributions_item_space="1dp"
                 app:contributions_item_width="10dp"/>
+
         </HorizontalScrollView>
+
+        <com.barryzhang.tcontributionsview.TContributionsView
+            android:id="@+id/contributionsViewX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:contributions_item_height="10dp"
+            app:contributions_item_space="1dp"
+            app:contributions_item_width="30dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -44,29 +53,26 @@
             android:layout_marginTop="10dp"
             android:text="Custom Color"/>
 
-        <HorizontalScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scrollbars="none">
 
-            <com.barryzhang.tcontributionsview.TContributionsView
-                android:id="@+id/contributionsView1s"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:contributions_color_1="#FFED3B"
-                app:contributions_color_2="#F4C42E"
-                app:contributions_color_3="#FB8308"
-                app:contributions_color_4="#040015"
-                app:contributions_item_height="10dp"
-                app:contributions_item_space="1dp"
-                app:contributions_item_width="10dp"/>
-        </HorizontalScrollView>
+        <com.barryzhang.tcontributionsview.TContributionsView
+            android:id="@+id/contributionsView1s"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contributions_color_0="#E1DFCE"
+            app:contributions_color_1="#FFED3B"
+            app:contributions_color_2="#F4C42E"
+            app:contributions_color_3="#FB8308"
+            app:contributions_color_4="#040015"
+            app:contributions_item_height="10dp"
+            app:contributions_item_space="1dp"
+            app:contributions_item_width="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Custom Color and use Circle mode"/>
+
         <HorizontalScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -74,16 +80,20 @@
 
             <com.barryzhang.tcontributionsview.TContributionsView
                 android:id="@+id/contributionsView1ss"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#C00"
+                android:paddingBottom="2dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="2dp"
                 app:contributions_color_1="#988AE4"
                 app:contributions_color_2="#A16AC4"
                 app:contributions_color_3="#FB8308"
                 app:contributions_color_4="#662160"
-                app:contributions_use_circle="true"
                 app:contributions_item_height="15dp"
                 app:contributions_item_space="1.5dp"
-                app:contributions_item_width="15dp"/>
+                app:contributions_item_width="15dp"
+                app:contributions_use_circle="true"/>
         </HorizontalScrollView>
 
         <TextView
@@ -97,7 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:contributions_item_height="15dp"
-            app:contributions_item_space="2dp"
+            app:contributions_item_space="1dp"
             app:contributions_item_width="15dp"/>
 
         <TextView
@@ -152,19 +162,19 @@
             android:id="@+id/contributionsView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             app:contributions_color_1="#755D19"
             app:contributions_color_2="#32E8C3"
             app:contributions_color_3="#29BE9A"
             app:contributions_color_4="#0E2F2C"
-            android:layout_marginTop="10dp"
-            app:contributions_item_height="10dp"
-            app:contributions_item_space="0.5dp"
-            app:contributions_item_width="10dp"/>
+            app:contributions_item_height="15dp"
+            app:contributions_item_space="1dp"
+            app:contributions_item_width="15dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="200dp"
             android:text="contributionsView7"/>
 
         <com.barryzhang.tcontributionsview.TContributionsView
@@ -199,7 +209,7 @@
 
         <com.barryzhang.tcontributionsview.TContributionsView
             android:id="@+id/contributionsView9"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:contributions_item_height="20dp"

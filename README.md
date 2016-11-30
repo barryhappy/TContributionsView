@@ -2,24 +2,18 @@
 TContributionsView可以用以显示类似github贡献度的View，当然，也绝不仅限于此~
 
 # 1. 效果图
-![overview.png](images/overview.png)
 
-使用：
-```java
-compile 'com.barryzhang:tcontributionsview:0.0.1'
-```
-
-目前处于测试状态，所以还需要：
-```java
-repositories {
-    maven {
-        url 'https://dl.bintray.com/barryhappy/maven/'
-    }
-```
-
+![overview.png](images/overview.png)￼
 # 2. 快速开始：
-![fast](images/14801274783930.jpg)
-只需这么写：
+
+**引入：**
+```java
+compile 'com.barryzhang:tcontributionsview:0.1'
+``` 
+ 
+想显示这样：
+![fast](images/14801274783930.jpg)￼
+只需要这么写：
 ```java
 IntArraysContributionsViewAdapter adapter = new IntArraysContributionsViewAdapter();
 Integer arrays[][] = {
@@ -34,7 +28,7 @@ contributionsView.setAdapter(adapter);
 ```
 
 # 3. 属性&Level说明
-![QQ20161126-1](images/QQ20161126-1.png)
+![QQ20161126-1](images/QQ20161126-1.png)￼
 目前支持0-5五个Level的格子、以及一个用-1表示的空状态。 
 只需给不同的格子设置不同的Level，即可控制它的显示。
 
@@ -95,7 +89,7 @@ adapter.setArrays(arrays);
 contributionsView.setAdapter(adapter);
 ```
 
-![](images/14802568958601.jpg)
+![](images/14802568958601.jpg)￼
 恭喜你获得成就：『出击时间到！』 😁
 
 通过`AbstractArraysContributionsViewAdapter`，可以使用任意数据类型T表示等级，只需要重写它的`int mapLevel(T from)`方法即可。
@@ -125,7 +119,7 @@ adapter.put(5, 10, 2);
 adapter.put(4, 11, 1);
 contributionsView.setAdapter(adapter);
 ```
-![](images/14801287752777.jpg)
+![](images/14801287752777.jpg)￼
 
 
 ## DateContributionsAdapter
@@ -148,7 +142,7 @@ adapter.put("2016-11-19", 2);
 adapter.put("2016-11-18", 4);
 contributionsView.setAdapter(adapter);
 ```
-![](images/14801292366055.jpg)
+![](images/14801292366055.jpg)￼
 
 ## 自定义
 

@@ -1,25 +1,25 @@
-**[【中文说明点击这里】](./README.cn.md)**
+**[【English Version Click Here】](./README.md)**
 
-`TContributionsView` can be use for a Contributions View, like in one personal homepage of Github, and more than that. 
+TContributionsView可以用以显示类似github贡献度的View，当然，也绝不仅限于此~
 
-> 👻At the beginning, I just want to use it for showing the contributions view like Github, and that's why it named `TContributionsView`. 
-But later, I found it seems to be able to do more things than I want ……
-For example: Github contributions, Pixel painting、Select seats in the cinema、checkerboard……
+> 👻一开始，我只是想用它来显示 Github 贡献图，所以才给它起名字叫TContributionsView，后来，我发现它似乎还有很多更有意思的玩法……
+目前想到的可以发展的应用场景有： github 贡献图、像素画、电影院选座？棋盘？……
 
-# 1. Overview
+# 1. 效果图
 
 ![overview.png](images/overview.png)￼
+# 2. 快速开始：
 
-# 2. Quick Start
+**引入：**
 
-**Import：**
 ```java
 compile 'com.barryzhang:tcontributionsview:0.1'
 ``` 
  
-If you want to show this :
+想显示这样：
 ![fast](images/14801274783930.jpg)￼
-Just writing these codes：
+只需要这么写：
+
 ```java
 IntArraysContributionsViewAdapter adapter = new IntArraysContributionsViewAdapter();
 Integer arrays[][] = {
@@ -32,14 +32,15 @@ Integer arrays[][] = {
 adapter.setArrays(arrays);
 contributionsView.setAdapter(adapter);
 ```
-😀Isn't very easy?
+😀是不是超简单？
 
-# 3. Attributes & `Level` 
+# 3. 属性&Level说明
+
 ![QQ20161126-1](images/QQ20161126-1.png)￼
-Every rectangle item is mapping to a int value as its level. Now can use level 0 to 4 (like Github)，and a extra -1 to express empty status.
-Just set different level to different item , you can control them. 
+每个格子都是用一个int值来表示它的Level属性。目前支持0-4五个Level的格子、以及一个用-1表示的空状态。 
+只需给不同的格子设置不同的Level，即可控制它的显示。
 
-Set item color、size、if show circle in xml:
+在xml中设置颜色、尺寸、是否显示圆形等：
 ```xml
 <com.barryzhang.tcontributionsview.TContributionsView
     android:id="@+id/contributionsView1s"
@@ -54,31 +55,28 @@ Set item color、size、if show circle in xml:
     app:contributions_item_space="1dp"
     app:contributions_item_width="10dp"/>
 ```
-
 # 4. Adapter
+使用setAdapter进行数据设置：
 
-Use setAdapter method to bind data to View.
-
-**Base usage:**
+**基本用法:**
 ```java
 BaseContributionsViewAdapter adapter;
 // config adapter 
 contributionsView.setAdapter(adapter);
 ```
-Several different Adapter were already built in project, and you can also build your custom Adapter very easily by yourself.
+已经内置了几种常用的Adapter，你也可以很方便地自定义自己的Adapter。 
 
-**Build-in Adapters:**
+**内置的几种Adapter**
 
-* `PositionContributionsViewAdapter` ：Based on (x,y) coordinate.
-* `AbstractArraysContributionsViewAdapter`：Based on a two-dimensional array, this is intuitive and very very easy to use.
-* `IntArraysContributionsViewAdapter`：This is extends AbstractArraysContributionsViewAdapter，use Int two-dimensional array.
-* `DateContributionsAdapter`：Based on date, with this Adapter, you can easily to get a Contributions View like Github. 
-* `TestContributionAdapter`：A random level Adapter —— I use it as a demo :-D
+* `PositionContributionsViewAdapter` ：基于(x,y)坐标
+* `AbstractArraysContributionsViewAdapter`：使用一个二维数组进行标识，用起来特别方便
+* `IntArraysContributionsViewAdapter`：继承AbstractArraysContributionsViewAdapter，使用int[][]表示数据
+* `DateContributionsAdapter`：基于日期的表示，用这个Adapter可以很方便地实现类似github个人主页的贡献度图的效果
+* `TestContributionAdapter`：一个随机level的adapter~ 一般用以演示 :-D
 
 
-## 4.1 ArraysContributionsViewAdapter 
-
-Mentioned earlier the "Quick Start" was a demo for ArraysContributionsViewAdapter, and in fact, it also can be used to do something much more interesting, like this: 
+## 4.1 ArraysContributionsViewAdapter
+前面的"快速开始"已经是一个例子，这个adapter其实还可以很方便地做一些其他的效果，比如这样：
 ```java
 IntArraysContributionsViewAdapter adapter = new IntArraysContributionsViewAdapter();
 Integer arrays[][] = {
@@ -103,15 +101,15 @@ contributionsView.setAdapter(adapter);
 ```
 
 ![](images/14802568958601.jpg)￼
-Achievement get!
-『Time to Strike!』 😁
+恭喜你获得成就：
+『出击时间到！』 😁
 
-And with `AbstractArraysContributionsViewAdapter`, you can use other data type T to express Level, just need to overwrite its `int mapLevel(T from)` method. 
+通过`AbstractArraysContributionsViewAdapter`，可以使用任意数据类型T表示等级，只需要重写它的`int mapLevel(T from)`方法即可。
 
-## 4.2 PositionContributionsViewAdapter 
+## 4.2 PositionContributionsViewAdapter
 
-Based on (x,y) position, use it with giving to every item a level, default is level 0.
-Here is a demo：
+基于(x,y)坐标，给每个格子设置显示等级，未设置的格子默认为0.
+例子：
 
 ```java
 PositionContributionsViewAdapter adapter =
@@ -140,9 +138,8 @@ contributionsView.setAdapter(adapter);
 
 
 ## 4.3 DateContributionsAdapter
-Use `DateContributionsAdapter`, you can easily to get a Contributions View like Github.
-Its row value is already be set to 7 (days of a week). 
-
+使用`DateContributionsAdapter`可以快速制作出类似github个人主页的贡献度显示效果。
+这里的row被固定为7（一周）。
 ```java
 DateContributionsAdapter adapter = new DateContributionsAdapter() ;
 adapter.setWeekCount(10);
@@ -162,21 +159,19 @@ contributionsView.setAdapter(adapter);
 ```
 ![](images/14801292366055.jpg)￼
 
-## 4.4 Custom by yourself
+## 4.4 自定义
 
-You can custom an Adapter very easily by yourself, just need to extends `BaseContributionsViewAdapter`, and overwrite some methods. 
- 
+可以很方便地进行自定义Adapter，只需要继承BaseContributionsViewAdapter，然后重写其中几个方法即可。
 ```java
-// get row 
+// 获取行数
 public abstract int getRowCount();
-// get column 
+// 获取列数
 public abstract int getColumnCount();
-// get level（-1~4）
+// 获取指定行列所对应的level值（-1~4）
 public abstract int getLevel(int row, int column);
 ```
 
-The build-in `TestContributionAdapter` is a simple demo：
-
+内置的`TestContributionAdapter`是一个很简单的示例：
 ```java
 
 public class TestContributionAdapter extends BaseContributionsViewAdapter {
@@ -205,7 +200,6 @@ public class TestContributionAdapter extends BaseContributionsViewAdapter {
 ```
  
 
-
 ***
 # 5. License 
 
@@ -222,7 +216,4 @@ public class TestContributionAdapter extends BaseContributionsViewAdapter {
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-
-
-
 

@@ -17,9 +17,10 @@ For example: Github contributions, Pixel painting、Select seats in the cinema�
 compile 'com.barryzhang:tcontributionsview:0.1'
 ``` 
  
-If you want to show this :
-![fast](images/14801274783930.jpg)￼
+If you want to show this :  
+![fast](images/14801274783930.jpg)￼  
 Just writing these codes：
+
 ```java
 IntArraysContributionsViewAdapter adapter = new IntArraysContributionsViewAdapter();
 Integer arrays[][] = {
@@ -39,12 +40,13 @@ contributionsView.setAdapter(adapter);
 Every rectangle item is mapping to a int value as its level. Now can use level 0 to 4 (like Github)，and a extra -1 to express empty status.
 Just set different level to different item , you can control them. 
 
-Set item color、size、if show circle in xml:
+Set item color、size、if show circle in xml:  
 ```xml
 <com.barryzhang.tcontributionsview.TContributionsView
     android:id="@+id/contributionsView1s"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"     app:contributions_use_circle="true"
+    android:layout_height="wrap_content"     
+    app:contributions_use_circle="true"
     app:contributions_color_0="#E1DFCE"
     app:contributions_color_1="#FFED3B"
     app:contributions_color_2="#F4C42E"
@@ -102,9 +104,9 @@ adapter.setArrays(arrays);
 contributionsView.setAdapter(adapter);
 ```
 
-![](images/14802568958601.jpg)￼
-Achievement get!
-『Time to Strike!』 😁
+![](images/14802568958601.jpg)￼  
+Achievement get!  
+『Time to Strike!』 😁  
 
 And with `AbstractArraysContributionsViewAdapter`, you can use other data type T to express Level, just need to overwrite its `int mapLevel(T from)` method. 
 

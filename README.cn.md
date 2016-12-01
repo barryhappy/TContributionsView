@@ -16,8 +16,8 @@ TContributionsView可以用以显示类似github贡献度的View，当然，也�
 compile 'com.barryzhang:tcontributionsview:0.1'
 ``` 
  
-想显示这样：
-![fast](images/14801274783930.jpg)￼
+想显示这样：  
+![fast](images/14801274783930.jpg)￼  
 只需要这么写：
 
 ```java
@@ -45,7 +45,8 @@ contributionsView.setAdapter(adapter);
 <com.barryzhang.tcontributionsview.TContributionsView
     android:id="@+id/contributionsView1s"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"     app:contributions_use_circle="true"
+    android:layout_height="wrap_content"     
+    app:contributions_use_circle="true"
     app:contributions_color_0="#E1DFCE"
     app:contributions_color_1="#FFED3B"
     app:contributions_color_2="#F4C42E"
@@ -100,8 +101,8 @@ adapter.setArrays(arrays);
 contributionsView.setAdapter(adapter);
 ```
 
-![](images/14802568958601.jpg)￼
-恭喜你获得成就：
+![](images/14802568958601.jpg)￼  
+恭喜你获得成就：  
 『出击时间到！』 😁
 
 通过`AbstractArraysContributionsViewAdapter`，可以使用任意数据类型T表示等级，只需要重写它的`int mapLevel(T from)`方法即可。

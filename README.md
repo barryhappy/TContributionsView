@@ -36,7 +36,7 @@ contributionsView.setAdapter(adapter);
 😀Isn't very easy?
 
 # 3. Attributes & `Level` 
-![QQ20161126-1](images/QQ20161126-1.png)￼
+![QQ20161126-1](images/QQ20161126-1.png)￼  
 Every rectangle item is mapping to a int value as its level. Now can use level 0 to 4 (like Github)，and a extra -1 to express empty status.
 Just set different level to different item , you can control them. 
 

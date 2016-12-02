@@ -36,7 +36,7 @@ contributionsView.setAdapter(adapter);
 
 # 3. 属性&Level说明
 
-![QQ20161126-1](images/QQ20161126-1.png)￼
+![QQ20161126-1](images/QQ20161126-1.png)￼  
 每个格子都是用一个int值来表示它的Level属性。目前支持0-4五个Level的格子、以及一个用-1表示的空状态。 
 只需给不同的格子设置不同的Level，即可控制它的显示。
 

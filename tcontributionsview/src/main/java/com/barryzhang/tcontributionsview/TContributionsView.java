@@ -42,6 +42,8 @@ public class TContributionsView extends View {
 
     private boolean useCircleMode = false;
 
+    OnDrawItemListener mOnDrawItemListener;
+
     public TContributionsView(Context context) {
         this(context, null);
     }
@@ -74,6 +76,11 @@ public class TContributionsView extends View {
         paintL2.setColor(colorL2);
         paintL3.setColor(colorL3);
         paintL4.setColor(colorL4);
+        paintEmpty.setAntiAlias(true);
+        paintL1.setAntiAlias(true);
+        paintL2.setAntiAlias(true);
+        paintL3.setAntiAlias(true);
+        paintL4.setAntiAlias(true);
 
 
         rectF = new RectF(0, 0, itemWidth, itemHeight);
@@ -123,17 +130,25 @@ public class TContributionsView extends View {
                     rectF.top = (day == 0 ? 0 : day * (itemHeight + itemSpace)) +  + getPaddingTop();
                     rectF.bottom = rectF.top + itemHeight;
                     final int level = mAdapter.getLevel(day, week);
-                    if (level >= 0) {
-                        drawItem(rectF, canvas, level);
+                    final Paint paintByLevel = getPaintByLevel(level);
+                    if(mOnDrawItemListener == null ||
+                            (mOnDrawItemListener != null &&!mOnDrawItemListener.beforeDrawItem(rectF, canvas,paintByLevel, level))) {
+                        if (level >= 0) {
+                            drawItem(rectF, canvas,paintByLevel,  level);
+                        }
                     }
+                    if(mOnDrawItemListener != null){
+                        mOnDrawItemListener.afterDrawItem(rectF, canvas,paintByLevel,  level);
+                    }
+
                 }
             }
         }
 
     }
 
-    protected void drawItem(RectF rect, Canvas canvas, int level) {
-        Paint paintByLevel = getPaintByLevel(level);
+    protected void drawItem(RectF rect, Canvas canvas, Paint paintByLevel, int level) {
+
         if (useCircleMode) {
             paintByLevel.setAntiAlias(true);
             canvas.drawCircle((rectF.left + rectF.right) / 2,
@@ -188,5 +203,29 @@ public class TContributionsView extends View {
 
     public boolean isUseCircleMode() {
         return useCircleMode;
+    }
+
+    public static interface OnDrawItemListener{
+        /**
+         * called before the default drawItem method,
+         * You are abel to control if call default drawItem next.
+         * @param rect
+         * @param canvas
+         * @param level
+         * @return True will not called default drawItem method, false otherwise.
+         */
+        boolean beforeDrawItem(RectF rect, Canvas canvas, Paint paint, int level);
+
+        /**
+         * called after the default drawItem method
+         * @param rect
+         * @param canvas
+         * @param level
+         */
+        void afterDrawItem(RectF rect, Canvas canvas, Paint paint, int level);
+    }
+
+    public void setOnDrawItemListener(OnDrawItemListener onDrawItemListener) {
+        this.mOnDrawItemListener = onDrawItemListener;
     }
 }

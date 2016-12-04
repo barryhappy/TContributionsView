@@ -1,6 +1,10 @@
 package com.barryzhang.tcontributionsviewdemo;
 
 import android.animation.ObjectAnimator;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,6 +17,7 @@ import com.barryzhang.tcontributionsview.adapter.DateContributionsAdapter;
 import com.barryzhang.tcontributionsview.adapter.IntArraysContributionsViewAdapter;
 import com.barryzhang.tcontributionsview.adapter.PositionContributionsViewAdapter;
 import com.barryzhang.tcontributionsview.adapter.TestContributionAdapter;
+import com.barryzhang.tcontributionsviewdemo.utils.CanvasUtil;
 
 import java.util.Date;
 
@@ -37,14 +42,15 @@ public class MainActivity extends AppCompatActivity {
         TContributionsView contributionsView9 = (TContributionsView) findViewById(R.id.contributionsView9);
 
         useTestAdapter(contributionsView);
-        useTestAdapter(contributionsViewX);
         useTestAdapter(contributionsView1s);
         useTestAdapter(contributionsView1ss, 5, 30);
+        useTestAdapter(contributionsViewX);
         usePositionAdapter(contributionsView2);
         useDateContributionsAdapter(contributionsView3);
         useIntegerArraysContributionsAdapter(contributionsView4);
         useMyArraysContributionsAdapter(contributionsView5);
         useIntegerArraysContributionsAdapterMineCraft(contributionsView6);
+        useTestAdapterWhitCustomDraw(contributionsView7, 5, 5);
     }
 
     private void useIntegerArraysContributionsAdapter(TContributionsView contributionsView) {
@@ -146,18 +152,31 @@ public class MainActivity extends AppCompatActivity {
         final TestContributionAdapter adapter = new TestContributionAdapter();
         contributionsView.setAdapter(adapter);
 
-        contributionsView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "click2", Toast.LENGTH_SHORT).show();
-                adapter.notifyDataSetChanged();
-            }
-        });
     }
 
     private void useTestAdapter(TContributionsView contributionsView, int row, int column) {
         TestContributionAdapter adapter = new TestContributionAdapter(row, column);
         contributionsView.setAdapter(adapter);
+    }
+
+    private void useTestAdapterWhitCustomDraw(final TContributionsView contributionsView, int row, int column) {
+        TestContributionAdapter adapter = new TestContributionAdapter(row, column);
+        contributionsView.setAdapter(adapter);
+
+        contributionsView.setOnDrawItemListener(new TContributionsView.OnDrawItemListener() {
+            @Override
+            public boolean beforeDrawItem(RectF rect, Canvas canvas, Paint paintByLevel, int level) {
+                return true;
+            }
+
+            @Override
+            public void afterDrawItem(RectF rect, Canvas canvas, Paint paintByLevel, int level) {
+                if (level < 0) {
+                    return;
+                }
+                CanvasUtil.drawPolygon(rect,canvas,paintByLevel,level+3);
+            }
+        });
     }
 
 

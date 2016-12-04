@@ -174,7 +174,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="10dp"
             android:text="contributionsView7"/>
 
         <com.barryzhang.tcontributionsview.TContributionsView
@@ -182,9 +182,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            app:contributions_color_1="#988AE4"
+            app:contributions_color_2="#A16AC4"
+            app:contributions_color_3="#FB8308"
+            app:contributions_color_4="#662160"
             app:contributions_item_height="20dp"
-            app:contributions_item_space="2dp"
-            app:contributions_item_width="20dp"/>
+            app:contributions_item_space="4dp"
+            app:contributions_item_width="20dp" />
 
         <TextView
             android:layout_width="wrap_content"

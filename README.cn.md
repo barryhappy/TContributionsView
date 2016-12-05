@@ -200,9 +200,12 @@ public class TestContributionAdapter extends BaseContributionsViewAdapter {
 }
 ```
  
+ 
+# 5. 关于作者
+ "barryhappy2010#gmail.com".replace("#","@") 
 
 ***
-# 5. License 
+# 6. License 
 
     Copyright 2016 Barry Zhang
 

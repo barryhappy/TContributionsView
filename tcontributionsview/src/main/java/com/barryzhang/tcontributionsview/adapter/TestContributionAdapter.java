@@ -31,6 +31,6 @@ public class TestContributionAdapter extends BaseContributionsViewAdapter {
 
     @Override
     public int getLevel(int row, int column) {
-        return (int) (Math.random() * 100) % 10;
+        return (int) (Math.random() * 100) % 5;
     }
 }

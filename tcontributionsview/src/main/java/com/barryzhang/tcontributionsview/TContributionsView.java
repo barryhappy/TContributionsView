@@ -41,9 +41,7 @@ public class TContributionsView extends View {
     private RectF rectF;
 
     private boolean useCircleMode = false;
-
-    OnDrawItemListener mOnDrawItemListener;
-
+ 
     public TContributionsView(Context context) {
         this(context, null);
     }
@@ -131,14 +129,14 @@ public class TContributionsView extends View {
                     rectF.bottom = rectF.top + itemHeight;
                     final int level = mAdapter.getLevel(day, week);
                     final Paint paintByLevel = getPaintByLevel(level);
-                    if(mOnDrawItemListener == null ||
-                            (mOnDrawItemListener != null &&!mOnDrawItemListener.beforeDrawItem(rectF, canvas,paintByLevel, level))) {
+                    if(mAdapter.getOnDrawItemListener() == null ||
+                            (mAdapter.getOnDrawItemListener() != null &&!mAdapter.getOnDrawItemListener().beforeDrawItem(rectF, canvas,paintByLevel, level))) {
                         if (level >= 0) {
                             drawItem(rectF, canvas,paintByLevel,  level);
                         }
                     }
-                    if(mOnDrawItemListener != null){
-                        mOnDrawItemListener.afterDrawItem(rectF, canvas,paintByLevel,  level);
+                    if(mAdapter.getOnDrawItemListener() != null){
+                        mAdapter.getOnDrawItemListener().afterDrawItem(rectF, canvas,paintByLevel,  level);
                     }
 
                 }
@@ -223,9 +221,5 @@ public class TContributionsView extends View {
          * @param level
          */
         void afterDrawItem(RectF rect, Canvas canvas, Paint paint, int level);
-    }
-
-    public void setOnDrawItemListener(OnDrawItemListener onDrawItemListener) {
-        this.mOnDrawItemListener = onDrawItemListener;
     }
 }

@@ -9,6 +9,8 @@ import com.barryzhang.tcontributionsview.TContributionsView;
 
 public abstract class BaseContributionsViewAdapter {
 
+    TContributionsView.OnDrawItemListener mOnDrawItemListener;
+
     private TContributionsView mContributionsView;
 
     public BaseContributionsViewAdapter() {
@@ -26,5 +28,13 @@ public abstract class BaseContributionsViewAdapter {
 
     public void setContributionsView(TContributionsView mContributionsView) {
         this.mContributionsView = mContributionsView;
+    }
+
+    public void setOnDrawItemListener(TContributionsView.OnDrawItemListener onDrawItemListener) {
+        this.mOnDrawItemListener = onDrawItemListener;
+    }
+
+    public TContributionsView.OnDrawItemListener getOnDrawItemListener() {
+        return mOnDrawItemListener;
     }
 }

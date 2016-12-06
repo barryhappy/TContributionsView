@@ -12,7 +12,7 @@ ext {
     siteUrl = 'https://github.com/barryhappy/TContributionsView'
     gitUrl = 'https://github.com/barryhappy/TContributionsView.git'
 
-    libraryVersion = '0.1'
+    libraryVersion = '0.2'
 
     developerId = 'barryhappy'
     developerName = 'Barry Zhang'
@@ -53,5 +53,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+//apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+//apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

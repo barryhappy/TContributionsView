@@ -161,22 +161,21 @@ public class MainActivity extends AppCompatActivity {
 
     private void useTestAdapterWhitCustomDraw(final TContributionsView contributionsView, int row, int column) {
         TestContributionAdapter adapter = new TestContributionAdapter(row, column);
-        contributionsView.setAdapter(adapter);
-
-        contributionsView.setOnDrawItemListener(new TContributionsView.OnDrawItemListener() {
+        adapter.setOnDrawItemListener(new TContributionsView.OnDrawItemListener() {
+            // called before the default drawItem method
             @Override
             public boolean beforeDrawItem(RectF rect, Canvas canvas, Paint paintByLevel, int level) {
+                // True will not called default drawItem method, false otherwise.
                 return true;
             }
-
+            //called after the default drawItem method
             @Override
             public void afterDrawItem(RectF rect, Canvas canvas, Paint paintByLevel, int level) {
-                if (level < 0) {
-                    return;
-                }
+                // Draw a Regular polygon inside the giving Rect area
                 CanvasUtil.drawPolygon(rect,canvas,paintByLevel,level+3);
             }
         });
+        contributionsView.setAdapter(adapter);
     }
 
 

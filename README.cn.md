@@ -13,7 +13,7 @@ TContributionsView可以用以显示类似github贡献度的View，当然，也�
 **引入：**
 
 ```java
-compile 'com.barryzhang:tcontributionsview:0.1'
+compile 'com.barryzhang:tcontributionsview:0.2'
 ``` 
  
 想显示这样：  
@@ -55,7 +55,8 @@ contributionsView.setAdapter(adapter);
     app:contributions_item_height="10dp"
     app:contributions_item_space="1dp"
     app:contributions_item_width="10dp"/>
-```
+```  
+
 # 4. Adapter
 使用setAdapter进行数据设置：
 
@@ -160,7 +161,7 @@ contributionsView.setAdapter(adapter);
 ```
 ![](images/14801292366055.jpg)￼
 
-## 4.4 自定义
+## 4.4 自定义Adapter
 
 可以很方便地进行自定义Adapter，只需要继承BaseContributionsViewAdapter，然后重写其中几个方法即可。
 ```java
@@ -199,13 +200,38 @@ public class TestContributionAdapter extends BaseContributionsViewAdapter {
     }
 }
 ```
+
+
+# 5. 自定义Item样式（Canvas）
+[0.2版本添加]  
+可以通过Canvas进行绘制自定义样式的格子，Demo：  
+![CustomDra](images/CustomDraw.png)￼  
+
+```java
+TestContributionAdapter adapter = new TestContributionAdapter(5, 5);
+adapter.setOnDrawItemListener(new TContributionsView.OnDrawItemListener() {
+    // called before the default drawItem method
+    @Override
+    public boolean beforeDrawItem(RectF rect, Canvas canvas, Paint paintByLevel, int level) {
+        // True will not called default drawItem method, false otherwise.
+        return true;
+    }
+    //called after the default drawItem method
+    @Override
+    public void afterDrawItem(RectF rect, Canvas canvas, Paint paintByLevel, int level) {
+        // Draw a Regular polygon inside the giving Rect area
+        CanvasUtil.drawPolygon(rect,canvas,paintByLevel,level+3);
+    }
+});
+contributionsView.setAdapter(adapter);
+```
+
  
- 
-# 5. 关于作者
+# 6. 关于作者
  "barryhappy2010#gmail.com".replace("#","@") 
 
 ***
-# 6. License 
+# 7. License 
 
     Copyright 2016 Barry Zhang
 

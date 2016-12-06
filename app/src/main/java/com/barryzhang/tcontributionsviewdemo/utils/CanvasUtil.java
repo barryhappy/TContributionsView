@@ -19,7 +19,7 @@ public class CanvasUtil {
      * @param number the number of side： For 3/4/5/6... is triangle/square/Pentagon/hexagon/...
      */
     public static void drawPolygon (RectF rect, Canvas canvas, Paint paintByLevel, int number) {
-        if(number<3) {
+        if(number < 3) {
             return;
         }
         float r = (rect.right - rect.left) / 2;

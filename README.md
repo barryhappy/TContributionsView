@@ -14,7 +14,7 @@ For example: Github contributions, Pixel painting、Select seats in the cinema�
 
 **Import：**
 ```java
-compile 'com.barryzhang:tcontributionsview:0.1'
+compile 'com.barryzhang:tcontributionsview:0.2'
 ``` 
  
 If you want to show this :  
@@ -164,7 +164,7 @@ contributionsView.setAdapter(adapter);
 ```
 ![](images/14801292366055.jpg)￼
 
-## 4.4 Custom by yourself
+## 4.4 Custom Adapter by yourself
 
 You can custom an Adapter very easily by yourself, just need to extends `BaseContributionsViewAdapter`, and overwrite some methods. 
  
@@ -205,6 +205,32 @@ public class TestContributionAdapter extends BaseContributionsViewAdapter {
     }
 }
 ```
+
+# 5. Custom Item Style（Canvas）
+[Since version 0.2]  
+You can get Canvas of view item, and so that you are able to custom any style as you want。
+Demo：  
+![CustomDra](images/CustomDraw.png)￼  
+
+```java
+TestContributionAdapter adapter = new TestContributionAdapter(5, 5);
+adapter.setOnDrawItemListener(new TContributionsView.OnDrawItemListener() {
+    // called before the default drawItem method
+    @Override
+    public boolean beforeDrawItem(RectF rect, Canvas canvas, Paint paintByLevel, int level) {
+        // True will not called default drawItem method, false otherwise.
+        return true;
+    }
+    //called after the default drawItem method
+    @Override
+    public void afterDrawItem(RectF rect, Canvas canvas, Paint paintByLevel, int level) {
+        // Draw a Regular polygon inside the giving Rect area
+        CanvasUtil.drawPolygon(rect,canvas,paintByLevel,level+3);
+    }
+});
+contributionsView.setAdapter(adapter);
+```
+
 
 # 5. About me
 "barryhappy2010#gmail.com".replace("#","@") 

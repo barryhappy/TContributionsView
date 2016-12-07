@@ -5,10 +5,13 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PointF;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.barryzhang.tcontributionsview.adapter.BaseContributionsViewAdapter;
 import com.barryzhang.tcontributionsview.adapter.PositionContributionsViewAdapter;
@@ -41,7 +44,7 @@ public class TContributionsView extends View {
     private RectF rectF;
 
     private boolean useCircleMode = false;
- 
+
     public TContributionsView(Context context) {
         this(context, null);
     }
@@ -88,6 +91,60 @@ public class TContributionsView extends View {
         }
     }
 
+
+    int mTouchCount = 0;
+    PointF mStartPoint = new PointF();
+    PointF mEndPoint = new PointF();
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        int action = event.getAction();
+        if(action == MotionEvent.ACTION_DOWN){
+            mTouchCount ++;
+        }else if(action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL){
+            mTouchCount --;
+        }
+        switch (action){
+            case MotionEvent.ACTION_DOWN:
+                mStartPoint.x = event.getX();
+                mStartPoint.y = event.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                mEndPoint.x = event.getX();
+                mEndPoint.y = event.getY();
+                int itemIndexX = getItemIndexX(mStartPoint.x);
+                int itemIndexY = getItemIndexY(mStartPoint.y);
+                if(itemIndexX == getItemIndexX(mEndPoint.x) && itemIndexY == getItemIndexY(mEndPoint.y)  ){
+                    Toast.makeText(getContext(),"Click:"+ itemIndexX +","+ itemIndexY,
+                            Toast.LENGTH_SHORT).show();
+                    //TODO onItemClick
+                }
+                break;
+            case MotionEvent.ACTION_CANCEL:
+                break;
+            case MotionEvent.ACTION_MOVE:
+                break;
+        }
+       return true;
+    }
+
+    int getItemIndexX(float touchX){
+        if(touchX < 0 || touchX > getMeasuredWidth()){
+            return -1;
+        }
+        Float itemIndex = touchX / (itemWidth + itemSpace);
+        return (itemIndex - itemIndex.intValue() )   <= 1- itemSpace / ((float)itemWidth +itemSpace) ?
+                itemIndex.intValue()  : -1;
+    }
+
+    int getItemIndexY(float touchY){
+        if(touchY < 0 || touchY > getMeasuredHeight()){
+            return -1;
+        }
+        Float itemIndex = touchY / (itemHeight + itemSpace);
+        return (itemIndex - itemIndex.intValue() ) <= 1- itemSpace / ((float)itemHeight +itemSpace) ?
+                itemIndex.intValue()  : -1;
+    }
+ 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
@@ -142,7 +199,6 @@ public class TContributionsView extends View {
                 }
             }
         }
-
     }
 
     protected void drawItem(RectF rect, Canvas canvas, Paint paintByLevel, int level) {

@@ -1,15 +1,11 @@
 package com.barryzhang.tcontributionsviewdemo;
 
-import android.animation.ObjectAnimator;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.Toast;
 
 import com.barryzhang.tcontributionsview.TContributionsView;
 import com.barryzhang.tcontributionsview.adapter.AbstractArraysContributionsViewAdapter;
@@ -18,8 +14,6 @@ import com.barryzhang.tcontributionsview.adapter.IntArraysContributionsViewAdapt
 import com.barryzhang.tcontributionsview.adapter.PositionContributionsViewAdapter;
 import com.barryzhang.tcontributionsview.adapter.TestContributionAdapter;
 import com.barryzhang.tcontributionsviewdemo.utils.CanvasUtil;
-
-import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -151,7 +145,6 @@ public class MainActivity extends AppCompatActivity {
     private void useTestAdapter(TContributionsView contributionsView) {
         final TestContributionAdapter adapter = new TestContributionAdapter();
         contributionsView.setAdapter(adapter);
-
     }
 
     private void useTestAdapter(TContributionsView contributionsView, int row, int column) {

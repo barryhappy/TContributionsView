@@ -100,7 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="contributionsView2"/>
+            android:text="PositionContributionsViewAdapter"/>
 
         <com.barryzhang.tcontributionsview.TContributionsView
             android:id="@+id/contributionsView2"
@@ -128,7 +128,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="contributionsView4"/>
+            android:text="DateContributionsAdapter"/>
 
         <com.barryzhang.tcontributionsview.TContributionsView
             android:id="@+id/contributionsView4"
@@ -142,7 +142,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="contributionsView5"/>
+            android:text="AbstractArraysContributionsViewAdapter"/>
 
         <com.barryzhang.tcontributionsview.TContributionsView
             android:id="@+id/contributionsView5"
@@ -156,13 +156,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="contributionsView6"/>
+            android:text="Time to Strike! "/>
 
         <com.barryzhang.tcontributionsview.TContributionsView
             android:id="@+id/contributionsView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             app:contributions_color_1="#755D19"
             app:contributions_color_2="#32E8C3"
             app:contributions_color_3="#29BE9A"
@@ -175,13 +174,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="contributionsView7"/>
+            android:text="Custom Drawing Item"/>
 
         <com.barryzhang.tcontributionsview.TContributionsView
             android:id="@+id/contributionsView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             app:contributions_color_1="#988AE4"
             app:contributions_color_2="#A16AC4"
             app:contributions_color_3="#FB8308"

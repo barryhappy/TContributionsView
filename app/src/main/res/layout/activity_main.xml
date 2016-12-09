@@ -187,35 +187,5 @@
             app:contributions_item_height="20dp"
             app:contributions_item_space="4dp"
             app:contributions_item_width="20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="contributionsView8"/>
-
-        <com.barryzhang.tcontributionsview.TContributionsView
-            android:id="@+id/contributionsView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:contributions_item_height="20dp"
-            app:contributions_item_space="2dp"
-            app:contributions_item_width="20dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="contributionsView9"/>
-
-        <com.barryzhang.tcontributionsview.TContributionsView
-            android:id="@+id/contributionsView9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:contributions_item_height="20dp"
-            app:contributions_item_space="2dp"
-            app:contributions_item_width="20dp"/>
     </LinearLayout>
 </ScrollView>

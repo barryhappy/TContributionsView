@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
         TContributionsView contributionsView5 = (TContributionsView) findViewById(R.id.contributionsView5);
         TContributionsView contributionsView6 = (TContributionsView) findViewById(R.id.contributionsView6);
         TContributionsView contributionsView7 = (TContributionsView) findViewById(R.id.contributionsView7);
-        TContributionsView contributionsView8 = (TContributionsView) findViewById(R.id.contributionsView8);
-        TContributionsView contributionsView9 = (TContributionsView) findViewById(R.id.contributionsView9);
 
         useTestAdapter(contributionsView);
         useTestAdapter(contributionsView1s);

@@ -231,12 +231,19 @@ adapter.setOnDrawItemListener(new TContributionsView.OnDrawItemListener() {
 contributionsView.setAdapter(adapter);
 ```
 
+# 6. Change Log
 
-# 5. About me
+## V 0.2
+Add custom item style: `adapter.setOnDrawItemListener`
+
+## V 0.1
+Basic
+
+# 7. About me
 "barryhappy2010#gmail.com".replace("#","@") 
 
 ***
-# 6. License 
+# 8. License 
 
     Copyright 2016 Barry Zhang
 

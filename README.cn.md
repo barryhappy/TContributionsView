@@ -226,12 +226,20 @@ adapter.setOnDrawItemListener(new TContributionsView.OnDrawItemListener() {
 contributionsView.setAdapter(adapter);
 ```
 
+# 6. 更新记录
+
+## V 0.2
+添加自定义item样式的方法: `adapter.setOnDrawItemListener`
+
+## V 0.1
+基础功能
+
  
-# 6. 关于作者
+# 7. 关于作者
  "barryhappy2010#gmail.com".replace("#","@") 
 
 ***
-# 7. License 
+# 8. License 
 
     Copyright 2016 Barry Zhang
 

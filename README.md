@@ -8,7 +8,7 @@ For example: Github contributions, Pixel painting、Select seats in the cinema�
 
 # 1. Overview
 
-Click [Here](apk/app-v0.2.apk) to download Demo, or scan this:  
+Click [Here](https://raw.githubusercontent.com/barryhappy/TContributionsView/master/apk/app-v0.2.apk) to download Demo, or scan this:  
 ![QRCode](apk/qrcode.png)   
 
 ![overview.png](images/overview.png)￼

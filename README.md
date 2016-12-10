@@ -8,6 +8,9 @@ For example: Github contributions, Pixel painting、Select seats in the cinema�
 
 # 1. Overview
 
+Click [Here](apk/app-v0.2.apk) to download Demo, or scan this:  
+![QRCode](apk/qrcode.png)   
+
 ![overview.png](images/overview.png)￼
 
 # 2. Quick Start

@@ -7,6 +7,9 @@ TContributionsView可以用以显示类似github贡献度的View，当然，也�
 
 # 1. 效果图
 
+点击[这里](apk/app-v0.2.apk)下载Demo，或者扫描二维码:  
+![QRCode](apk/qrcode.png)   
+
 ![overview.png](images/overview.png)￼
 # 2. 快速开始：
 

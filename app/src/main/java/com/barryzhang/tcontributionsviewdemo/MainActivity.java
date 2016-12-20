@@ -6,6 +6,7 @@ import android.graphics.RectF;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.barryzhang.tcontributionsview.TContributionsView;
 import com.barryzhang.tcontributionsview.adapter.AbstractArraysContributionsViewAdapter;
@@ -14,6 +15,8 @@ import com.barryzhang.tcontributionsview.adapter.IntArraysContributionsViewAdapt
 import com.barryzhang.tcontributionsview.adapter.PositionContributionsViewAdapter;
 import com.barryzhang.tcontributionsview.adapter.TestContributionAdapter;
 import com.barryzhang.tcontributionsviewdemo.utils.CanvasUtil;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         TContributionsView contributionsView5 = (TContributionsView) findViewById(R.id.contributionsView5);
         TContributionsView contributionsView6 = (TContributionsView) findViewById(R.id.contributionsView6);
         TContributionsView contributionsView7 = (TContributionsView) findViewById(R.id.contributionsView7);
+        TContributionsView contributionsView8 = (TContributionsView) findViewById(R.id.contributionsView8);
 
         useTestAdapter(contributionsView);
         useTestAdapter(contributionsView1s);
@@ -43,11 +47,12 @@ public class MainActivity extends AppCompatActivity {
         useMyArraysContributionsAdapter(contributionsView5);
         useIntegerArraysContributionsAdapterMineCraft(contributionsView6);
         useTestAdapterWhitCustomDraw(contributionsView7, 5, 5);
+        addOnItemClick(contributionsView8);
     }
 
     private void useIntegerArraysContributionsAdapter(TContributionsView contributionsView) {
-        IntArraysContributionsViewAdapter adapter = new IntArraysContributionsViewAdapter();
-        Integer arrays[][] = {
+        final IntArraysContributionsViewAdapter adapter = new IntArraysContributionsViewAdapter();
+        final Integer arrays[][] = {
                 {0, 0, 0, 1, 0, 0, 0, 0},
                 {0, 0, 1, 3, 1, 0, 0},
                 {0, 1, 2, 4, 2, 1, 0},
@@ -152,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void useTestAdapterWhitCustomDraw(final TContributionsView contributionsView, int row, int column) {
         TestContributionAdapter adapter = new TestContributionAdapter(row, column);
+
         adapter.setOnDrawItemListener(new TContributionsView.OnDrawItemListener() {
             // called before the default drawItem method
             @Override
@@ -163,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterDrawItem(RectF rect, Canvas canvas, Paint paintByLevel, int level) {
                 // Draw a Regular polygon inside the giving Rect area
-                CanvasUtil.drawPolygon(rect,canvas,paintByLevel,level+3);
+                CanvasUtil.drawPolygon(rect,canvas,paintByLevel, level + 3 );
             }
         });
         contributionsView.setAdapter(adapter);
@@ -194,6 +200,29 @@ public class MainActivity extends AppCompatActivity {
         adapter.put(6, 9, 3);
         adapter.put(5, 10, 2);
         adapter.put(4, 11, 1);
+        contributionsView.setAdapter(adapter);
+    }
+
+    private void addOnItemClick(TContributionsView contributionsView) {
+        final IntArraysContributionsViewAdapter adapter = new IntArraysContributionsViewAdapter();
+        final Integer arrays[][] = {
+                {0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0},
+        };
+        adapter.setArrays(arrays);
+        adapter.setOnItemClickListenerListener(new TContributionsView.OnItemClickListener() {
+            @Override
+            public void onItemClick(int row, int col, int level) {
+                Toast.makeText(MainActivity.this,
+                        String.format(Locale.getDefault(), "row = %d, col=%d",row,col),
+                        Toast.LENGTH_SHORT).show();
+                    arrays[row][col]= level + 1;
+                    adapter.notifyDataSetChanged();
+            }
+        });
         contributionsView.setAdapter(adapter);
     }
 }

@@ -114,9 +114,10 @@ public class TContributionsView extends View {
                 int itemIndexX = getItemIndexX(mStartPoint.x);
                 int itemIndexY = getItemIndexY(mStartPoint.y);
                 if(itemIndexX == getItemIndexX(mEndPoint.x) && itemIndexY == getItemIndexY(mEndPoint.y)  ){
-                    Toast.makeText(getContext(),"Click:"+ itemIndexX +","+ itemIndexY,
-                            Toast.LENGTH_SHORT).show();
-                    //TODO onItemClick
+                    if(itemIndexX >= 0 && itemIndexY >=0 && mAdapter != null){
+                        mAdapter.onReceiveItemClick(
+                                itemIndexY,itemIndexX,mAdapter.getLevel(itemIndexY, itemIndexX));
+                    }
                 }
                 break;
             case MotionEvent.ACTION_CANCEL:
@@ -144,7 +145,7 @@ public class TContributionsView extends View {
         return (itemIndex - itemIndex.intValue() ) <= 1- itemSpace / ((float)itemHeight +itemSpace) ?
                 itemIndex.intValue()  : -1;
     }
- 
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
@@ -277,5 +278,10 @@ public class TContributionsView extends View {
          * @param level
          */
         void afterDrawItem(RectF rect, Canvas canvas, Paint paint, int level);
+    }
+
+
+    public static interface OnItemClickListener{
+        void onItemClick(int row, int col, int level);
     }
 }

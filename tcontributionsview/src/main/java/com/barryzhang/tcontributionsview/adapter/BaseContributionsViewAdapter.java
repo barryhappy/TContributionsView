@@ -10,10 +10,17 @@ import com.barryzhang.tcontributionsview.TContributionsView;
 public abstract class BaseContributionsViewAdapter {
 
     TContributionsView.OnDrawItemListener mOnDrawItemListener;
+    TContributionsView.OnItemClickListener mOnItemClickListener;
 
     private TContributionsView mContributionsView;
 
     public BaseContributionsViewAdapter() {
+    }
+
+    public void onReceiveItemClick(int row, int col, int level){
+        if(mOnItemClickListener != null){
+            mOnItemClickListener.onItemClick( row,col,level);
+        }
     }
 
     public abstract int getRowCount();
@@ -34,7 +41,14 @@ public abstract class BaseContributionsViewAdapter {
         this.mOnDrawItemListener = onDrawItemListener;
     }
 
+    public void setOnItemClickListenerListener(TContributionsView.OnItemClickListener onItemClickListener) {
+        this.mOnItemClickListener = onItemClickListener;
+    }
+
     public TContributionsView.OnDrawItemListener getOnDrawItemListener() {
         return mOnDrawItemListener;
+    }
+    public TContributionsView.OnItemClickListener getOnItemClickListener() {
+        return mOnItemClickListener;
     }
 }
